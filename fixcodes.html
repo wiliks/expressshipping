@@ -1,0 +1,84 @@
+<div id="exampleValidator" class="wizard">
+    <ul class="wizard-steps" role="tablist">
+        <li class="active" role="tab">
+            <h4><span><i class="ti-user"></i></span>ID</h4> </li>
+        <li role="tab">
+            <h4><span><i class="ti-marker-alt"></i></span>Name</h4> </li>
+            <li role="tab">
+            <h4><span><i class="ti-marker"></i></span>First Location</h4> </li>
+        <li role="tab">
+            <h4><span><i class="ti-marker"></i></span>Current Location</h4> </li>
+            <li role="tab">
+            <h4><span><i class="ti-marker"></i></span>Map Location</h4> </li>
+            <li role="tab">
+            <h4><span><i class="ti-marker"></i></span>Destination</h4> </li>
+    </ul>
+    <form id="validation" class="form-horizontal" action="functions/new_package.php" method="post">
+        <div class="wizard-content">
+            <div class="wizard-pane active" role="tabpanel">
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">ID  (<i>Enter Package Tracking ID</i>)</label>
+                    <div class="col-xs-5">
+                        <input type="text" id="id" class="form-control" name="ID" ></input> </div><button onClick="generate()">Generate</button>
+                </div>
+            </div>
+            <div class="wizard-pane" role="tabpanel">
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">Package Name</label>
+                    <div class="col-xs-5">
+                        <input type="text" class="form-control" name="name" required/> </div>
+                </div>
+            </div>
+
+            <div class="wizard-pane" role="tabpanel">
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">First Location</label>
+                    <div class="col-xs-5">
+                        <input class="form-control" name="firstlocation" required > </textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="wizard-pane" role="tabpanel">
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">Location</label>
+                    <div class="col-xs-5">
+                        <input class="form-control" name="location" required > </textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="wizard-pane" role="tabpanel">
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">Map Location</label>
+                    <div class="col-xs-5">
+                        <input class="form-control" name="maplocation" required > </textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="wizard-pane" role="tabpanel">
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">Destination</label>
+                    <div class="col-xs-5">
+                        <input class="form-control" name="destination" required > </textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="submit" name="submit" value="save"/>
+    </form>
+</div>
+
+
+
+
+
+
+try {
+    $stmt->execute([$ID, $name, $location,$maplocation,$destination,$firstlocation]);
+    header('Location:../packages.php?posted');
+
+    }
+
+   catch (Exception $e) {
+      $e->getMessage();
+      echo "Error";
+  }
